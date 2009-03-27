@@ -1,0 +1,36 @@
+
+xbin
+====
+
+A collection of nonstandard Unix hacks
+for command line awesomeness.
+
+
+xip
+---
+
+The name "zip" was already taken.  This
+interlaces the contents of a variadic list
+of files, especially handy with subshell
+file descriptor replacement.  The following
+shows the opposing sides of a six sided die.
+The first example works in BSD variants, and
+the second in SysV/Linux variants::
+
+    xip <(jot 6) <(jot 6 6 1) | xargs -n 2
+    xip <(seq 6) <(seq 6 -1 1) | xargs -n 2
+
+
+dog
+---
+
+Buffers stdin into memory until it closes,
+then writes to a given file.  This is handy
+for pipeline loops, where normally redirecting
+to and from the same file would result in
+premature truncation.  The following are
+equivalent::
+
+    sort file
+    cat file | sort | dog file
+
