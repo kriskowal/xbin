@@ -1,0 +1,10 @@
+#!/usr/bin/perl
+my @cycle;
+while (my $round = <>) {
+	print;
+	push @cycle, $round;
+}
+while (my $round = shift @cycle) {
+	push @cycle, $round;
+	print $round;
+}

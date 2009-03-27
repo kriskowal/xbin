@@ -34,3 +34,60 @@ equivalent::
     sort file
     cat file | sort | dog file
 
+
+shuffle
+-------
+
+Shuffles the lines from standard input
+and writes them to standard output.  If
+the input stream is indefinite, the input
+can be shuffled indefinitely by specifying
+a pool size as a second argument.
+
+
+
+enquote
+-------
+
+Enquotes every line from standard input
+and writes it to standard output.  Handy
+for pipelines that end in xargs, when
+file -print0 and xargs -0 aren't really an
+option.  The following are pretty close
+to equivalent:
+
+    find . -print0 | xargs -0 tar cf -
+    find . | enquote | xargs tar cf -
+    
+
+cycle
+-----
+
+Reads all of standard input and writes
+it back, repeatedly, to standard output.
+The first pass gets written immediately,
+so an indifinite stream will only cause
+memory bloat at the rate at which cycle's
+standard output is consumed::
+
+    find . -name '*.mp3' \
+    | cycle \
+    | shuffle 10000 \
+    | enquote \
+    | xargs -n 1 mpg123
+
+
+TODO
+====
+
+
+sample
+------
+
+Writes a random sample of the lines from
+standard input back out to standard output.
+Specify a sample size as an argument.
+The sample is in stable order.  The input
+stream may safely be of indefinite size.
+
+

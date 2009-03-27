@@ -1,0 +1,23 @@
+#!/usr/bin/perl
+
+sub by_rand {return rand() < .5? -1: 1};
+
+# accept a block size argument
+my @pool;
+if (@ARGV) {
+	my $block = shift;
+	for (1..$block) {
+		$_ = <> or last;
+		push @pool, $_;
+	}
+} else {
+	@pool = <>;
+}
+
+while (@pool) {
+	print splice @pool, (int rand @pool), 1;
+	if ($_ = <>) {
+		push @pool, $_;
+	}
+}
+

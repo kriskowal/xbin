@@ -1,0 +1,5 @@
+#!/usr/bin/perl
+my $file = shift @ARGV;
+my @lines = <STDIN>;
+open FILE, ">$file" or die "unable to open '$file': $!";
+print FILE @lines;
