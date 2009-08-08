@@ -1,6 +1,6 @@
 {
     "name": "xbin",
-    "description": "A suite of command line tools for enlightened pipelines.",
+    "description": "A suite of Unix command line tools for enlightened pipelines.",
     "keywords": [
         "cli",
         "command line",
