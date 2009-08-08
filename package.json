@@ -1,0 +1,23 @@
+{
+    "name": "xbin",
+    "description": "A suite of command line tools for enlightened pipelines.",
+    "keywords": [
+        "cli",
+        "command line",
+        "bin",
+        "tools",
+        "enquote",
+        "xip",
+        "shuffle",
+        "cycle",
+        "nonblank",
+        "uncomment",
+        "dog"
+    ],
+    "author": {
+        "name": "Kris Kowal",
+        "web": "http://cixar.com/~kris.kowal",
+        "email": "kris.kowal@cixar.com"
+    },
+    "lean": ["bin"]
+}
