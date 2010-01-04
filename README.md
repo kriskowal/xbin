@@ -67,6 +67,27 @@ cycle's standard output is consumed::
     | xargs -n 1 mpg123
 
 
+findall
+-----
+
+Convenience command for find . -name "<file_pattern>" -print0 | xargs -0 grep "<grep_pattern>". Significantly faster than grep -r.
+
+    findall "<pattern1>"
+
+is equivalent to
+
+    find . -name "*" -print0 | xargs -0 grep "<pattern1>"
+
+while
+
+    findall "<pattern1>" "<pattern2>"
+
+expands to
+
+    find . -name "<pattern1>" -print0 | xargs -0 grep "<pattern2>"
+
+
+
 TODO
 ====
 

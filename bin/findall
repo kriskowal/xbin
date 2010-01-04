@@ -1,0 +1,9 @@
+if [ "$2" ]; then
+    file_pattern="$1"
+    grep_pattern="$2"
+else
+    file_pattern="*"
+    grep_pattern="$1"
+fi
+
+find . -name "$file_pattern" -print0 | xargs -0 grep "$grep_pattern"
