@@ -68,7 +68,7 @@ cycle's standard output is consumed::
 
 
 findall
------
+-------
 
 Convenience command for find . -name "<file_pattern>" -print0 | xargs -0 grep "<grep_pattern>". Significantly faster than grep -r.
 
@@ -97,4 +97,29 @@ size.
 
 This program is called `samp` so as not to collide with bsd's `random`
 or OS X's `sample`.
+
+
+unique
+------
+
+Reads lines from standard input and writes the first of each unique
+line.  This is similar to the behavior of the highly optimized `uniq`.
+`uniq` suppresses the output of sequentially redundant lines, so to
+create a truly unique set, the common idiom is to sort the input.
+However, this does not preserve the order.  In this sense, `unique` is
+a "stable" operation.
+
+The following are equivalent:
+
+    cat input | sort | uniq | dog output
+    cat input | unique | sort | dog output
+
+Example, removing redundant elements from `$PATH`:
+
+    export PATH=$(
+        echo $PATH \
+        | tr ':' '\n' \
+        | unique \
+        | paste -sd: -
+    )
 
