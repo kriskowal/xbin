@@ -12,7 +12,8 @@
         "cycle",
         "nonblank",
         "uncomment",
-        "dog"
+        "dog",
+        "samp"
     ],
     "author": {
         "name": "Kris Kowal",

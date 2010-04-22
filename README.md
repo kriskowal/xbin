@@ -87,16 +87,14 @@ expands to
     find . -name "<pattern1>" -print0 | xargs -0 grep "<pattern2>"
 
 
-
-TODO
-====
-
-
-sample
-------
+samp
+----
 
 Writes a random sample of the lines from standard input back out to
 standard output.  Specify a sample size as an argument.  The sample
 is in stable order.  The input stream may safely be of indefinite
 size.
+
+This program is called `samp` so as not to collide with bsd's `random`
+or OS X's `sample`.
 

@@ -1,0 +1,27 @@
+#!/usr/bin/env python
+"""usage: %prog [-n N]
+
+Returns a random uniform sample of the lines on stdin using a technique
+called reservoir sampling [VITTER '85]. Preserves input ordering."""
+
+import sys
+from optparse import OptionParser
+p = OptionParser(usage = __doc__)
+p.add_option(
+    '-n', default = 1, type = int,
+    help = 'number of lines to sample (default 1)')
+(options, args) = p.parse_args()
+if options.n < 1:
+    p.error('sample size must be positive')
+
+import random
+sample = []
+for i, line in enumerate(sys.stdin):
+    if i < options.n:
+        sample.append((i, line))
+    else:
+        r = random.randrange(i+1)
+        if r < options.n:
+            sample[r] = (i, line)
+
+sys.stdout.write(''.join(l for i,l in sorted(sample)))
