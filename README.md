@@ -123,3 +123,22 @@ Example, removing redundant elements from `$PATH`:
         | paste -sd: -
     )
 
+
+activate
+--------
+
+Source this script to add this project to your PATH.
+
+    . bin/activate
+
+
+mkroot
+------
+
+After activating this project, use `mkroot` to replicate it.
+
+    mkroot foo
+
+See https://github.com/kriskowal/mkroot for details.
+
+

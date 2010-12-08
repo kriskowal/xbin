@@ -1,0 +1,14 @@
+#!/bin/bash
+(
+    cd $PACKAGE_HOME
+    find . \
+        | grep -v '\.git' \
+        | cpio -o
+) \
+| (
+    if [ "$1" ]; then
+        mkdir $1
+        cd $1
+    fi
+    cpio -iv
+)
